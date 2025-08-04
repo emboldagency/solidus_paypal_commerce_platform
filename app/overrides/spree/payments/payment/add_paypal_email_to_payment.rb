@@ -1,9 +1,17 @@
 # frozen_string_literal: true
 
-Deface::Override.new(
-    name: "payments/payment/add_paypal_email_to_payment",
-    virtual_path: "spree/payments/_payment",
-    original: "0b5b5ae53626059cb3a202ef95d10827dd399925",
-    insert_after: "erb[loud]:contains('content_tag(:span, payment.payment_method.name)')",
-    partial: "solidus_paypal_commerce_platform/payments/payment",
-)
+module Spree
+    module Payments
+        module Payment
+            module AddPaypalEmailToPayment
+                Deface::Override.new(
+                    name: "payments/payment/add_paypal_email_to_payment",
+                    virtual_path: "spree/payments/_payment",
+                    original: "0b5b5ae53626059cb3a202ef95d10827dd399925",
+                    insert_after: "erb[loud]:contains('content_tag(:span, payment.payment_method.name)')",
+                    partial: "solidus_paypal_commerce_platform/payments/payment",
+                )
+            end
+        end
+    end
+end
