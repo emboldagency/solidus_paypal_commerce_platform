@@ -43,7 +43,7 @@ module SolidusPaypalCommercePlatform
         end
 
         def find_state(state_name, country)
-            if state = country.states.find_by(abbr: state_name) || country.states.find_by(name: state_name)
+            if (state = country.states.find_by(abbr: state_name) || country.states.find_by(name: state_name))
                 state
             else
                 SolidusPaypalCommercePlatform.config.state_guesser_class.new(state_name, country).guess

@@ -50,19 +50,21 @@ module SolidusPaypalCommercePlatform
             "solidus_paypal_commerce_platform.responses.#{request.class.name.underscore}"
         end
 
-        def self.fetch_api_credentials(auth_code:, client_id:, nonce:)
-            client = new(client_id: client_id)
+        class << self
+            def fetch_api_credentials(auth_code:, client_id:, nonce:)
+                client = new(client_id: client_id)
 
-            access_token = client.execute(AccessTokenAuthorizationRequest.new(
-                environment: client.environment,
-                auth_code: auth_code,
-                nonce: nonce,
-            )).result.access_token
+                access_token = client.execute(AccessTokenAuthorizationRequest.new(
+                    environment: client.environment,
+                    auth_code: auth_code,
+                    nonce: nonce,
+                )).result.access_token
 
-            client.execute(FetchMerchantCredentialsRequest.new(
-                access_token: access_token,
-                partner_merchant_id: SolidusPaypalCommercePlatform.config.partner_id,
-            )).result
+                client.execute(FetchMerchantCredentialsRequest.new(
+                    access_token: access_token,
+                    partner_merchant_id: SolidusPaypalCommercePlatform.config.partner_id,
+                )).result
+            end
         end
 
         def wrap_response(response, success_message: nil, failure_message: nil)
