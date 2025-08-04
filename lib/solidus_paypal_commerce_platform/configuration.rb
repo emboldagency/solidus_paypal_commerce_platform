@@ -25,7 +25,7 @@ module SolidusPaypalCommercePlatform
         end
 
         def env=(value)
-            unless %w[live sandbox].include?(value)
+            if %w[live sandbox].exclude?(value)
                 raise InvalidEnvironment, "#{value} is not a valid environment"
             end
 

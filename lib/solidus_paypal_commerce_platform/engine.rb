@@ -18,7 +18,7 @@ module SolidusPaypalCommercePlatform
             app.config.to_prepare do
                 app.config.spree.payment_methods << SolidusPaypalCommercePlatform::PaymentMethod
 
-                unless SolidusPaypalCommercePlatform::PaymentMethod.allowed_admin_form_preference_types.include?(:paypal_select)
+                if SolidusPaypalCommercePlatform::PaymentMethod.allowed_admin_form_preference_types.exclude?(:paypal_select)
                     SolidusPaypalCommercePlatform::PaymentMethod.allowed_admin_form_preference_types << :paypal_select
                 end
 
