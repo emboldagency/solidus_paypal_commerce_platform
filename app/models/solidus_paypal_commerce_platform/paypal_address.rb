@@ -13,7 +13,7 @@ module SolidusPaypalCommercePlatform
 
             return unless @order.ship_address.valid?
 
-            @order.check_shipments_and_restart_checkout
+            @order.update_shipments if @order.respond_to?(:update_shipments)
             @order.email = "info@solidus.io" unless @order.email
             @order.contents.advance
         end

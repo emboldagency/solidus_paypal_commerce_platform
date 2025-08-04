@@ -29,7 +29,7 @@ module SolidusPaypalCommercePlatform
             paypal_address = SolidusPaypalCommercePlatform::PaypalAddress.new(@order)
 
             if paypal_address.update(paypal_address_params).valid?
-                @order.check_shipments_and_restart_checkout
+                @order.update_shipments if @order.respond_to?(:update_shipments)
                 @order.contents.advance
                 render(json: {}, status: :ok)
             else
