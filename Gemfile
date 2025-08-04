@@ -36,6 +36,8 @@ if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('3')
   gem 'net-smtp', require: false
 end
 
+gem "embold_ruby_style", github: "emboldagency/embold_ruby_style", branch: "main"
+
 gemspec
 
 # Use a local Gemfile to include development dependencies that might not be

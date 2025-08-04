@@ -1,19 +1,17 @@
 require:
   - solidus_dev_support/rubocop
 
+inherit_gem:
+  embold_ruby_style:
+    - default.yml
+
 AllCops:
   NewCops: disable
-  TargetRubyVersion: '2.7'
+  TargetRubyVersion: '3.3'
   Exclude:
     - sandbox/**/*
     - spec/dummy/**/*
     - vendor/bundle/**/*
-
-Layout/FirstArgumentIndentation:
-  EnforcedStyle: consistent
-
-Layout/FirstArrayElementIndentation:
-  EnforcedStyle: consistent
 
 Naming/VariableNumber:
   # PayPal uses snake_case, we use normal_case ¯\_(ツ)_/¯
