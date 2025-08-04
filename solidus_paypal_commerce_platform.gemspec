@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'solidus_support', '>= 0.8.0'
   spec.add_dependency 'solidus_webhooks', '~> 0.2'
 
-  spec.add_dependency 'paypalhttp'
+    spec.add_dependency("ostruct")
 
   spec.add_development_dependency 'cuprite'
   spec.add_development_dependency 'solidus_dev_support', '~> 2.5'
