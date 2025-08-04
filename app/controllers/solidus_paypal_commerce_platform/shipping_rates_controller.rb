@@ -18,7 +18,7 @@ module SolidusPaypalCommercePlatform
             if @errors.none?
                 render(json: @paypal_order, status: :ok)
             else
-                render(json: @errors.full_messages, status: :unprocessable_entity)
+                render(json: @errors.full_messages, status: :unprocessable_content)
             end
         end
 

@@ -19,7 +19,7 @@ module SolidusPaypalCommercePlatform
                     notice: "The PayPal Commerce Platform payment method has been successfully created",
                 )
             else
-                render(json: @payment_method.errors, status: :unprocessable_entity)
+                render(json: @payment_method.errors, status: :unprocessable_content)
             end
         end
 

@@ -19,7 +19,7 @@ module SolidusPaypalCommercePlatform
                 cookies.signed[:guest_token] = @order.guest_token
                 render(json: @order, status: :ok)
             else
-                render(json: @order.errors.full_messages, status: :unprocessable_entity)
+                render(json: @order.errors.full_messages, status: :unprocessable_content)
             end
         end
 
@@ -29,11 +29,11 @@ module SolidusPaypalCommercePlatform
             paypal_address = SolidusPaypalCommercePlatform::PaypalAddress.new(@order)
 
             if paypal_address.update(paypal_address_params).valid?
-                @order.ensure_updated_shipments
+                @order.check_shipments_and_restart_checkout
                 @order.contents.advance
                 render(json: {}, status: :ok)
             else
-                render(json: paypal_address.errors.full_messages, status: :unprocessable_entity)
+                render(json: paypal_address.errors.full_messages, status: :unprocessable_content)
             end
         end
 
