@@ -10,7 +10,7 @@ else
     %w[solidusio/solidus] * 2
 end
 gem "solidus", github: solidus_git, branch: branch
-gem "solidus_frontend", github: solidus_frontend_git, branch: branch
+gem "solidus_frontend", github: solidus_frontend_git, branch: "main"
 
 # Needed to help Bundler figure out how to resolve dependencies,
 # otherwise it takes forever to resolve them.
