@@ -26,6 +26,10 @@ RSpec/DescribeClass:
   Exclude:
     - spec/features/**/*
 
+RSpec/ExampleLength:
+  # We have some long examples, but they are not that bad.
+  Max: 32
+
 # No need to make the code more complex for no real gain.
 RSpec/MessageSpies:
   Enabled: false
